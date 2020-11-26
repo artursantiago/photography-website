@@ -73,6 +73,7 @@ ul {
 
 body {
   font-family: "Ruhl", sans-serif;
+  animation: opening 1s ease-in-out;
 }
 
 h1 {
@@ -84,6 +85,7 @@ h1 {
 .main-head {
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
+  z-index: 2;
 }
 
 .main-head nav {
@@ -104,6 +106,25 @@ h1 {
   display: flex;
   justify-content: space-around;
   flex: 1 1 30rem;
+}
+
+.nav-links a {
+  padding: 0.2rem 1rem;
+  position: relative;
+}
+
+.nav-links a:after {
+  content: '';
+  display: block;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.7);
+  width: 0;
+  position: absolute;
+  -webkit-transition: 1s ease;
+  transition: 0.5s ease;
+}
+
+.nav-links a:hover:after { 
+  width: 100%; 
 }
 
 /* Hero Section */
@@ -129,6 +150,7 @@ h1 {
 
 .hero-introduction p {
   padding: 5rem 10rem;
+  color: var(--gray-text);
 }
 
 .hero-introduction a {
@@ -156,8 +178,114 @@ h1 {
   bottom: 0;
   left: -20%;
   z-index: -1;
+
+  transform-origin: bottom;
+  transform: translateY(10%) rotateZ(-10deg) rotateX(-90deg);
+  animation: plant-entrance 1s ease-in-out 0.5s forwards,
+             plant-shake 2.5s ease-in-out 1.5s alternate-reverse infinite;
+  max-height: 80%;
 }
 
 .plant2 {
   left: 40%;
+}
+
+/* Animations */
+
+.burger {
+  display: none;
+}
+
+@keyframes opening {
+  from {
+    opacity: 0;
+  } 
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes plant-entrance {
+  from {
+    transform: translateY(10%) rotateZ(-10deg) rotateX(-90deg);
+  }
+  to {
+    transform: translateY(0%) rotateZ(0deg) rotateX(0deg);
+  }
+}
+
+@keyframes plant-shake {
+  from {
+    transform: rotateZ(-5deg);
+  }
+  to {
+    transform: rotateZ(0deg);
+  }
+}
+
+/* Media Queries */
+
+@media screen and  (max-width: 842px) {
+
+  /* Burger */
+  .burger {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .burger span {
+    display: block;
+    padding: 0.2rem 2rem;
+    background: var(--gray-text);
+    margin: 0.5rem 0rem;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-links {
+    background: var(--background-color);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 100%;
+
+    flex-direction: column;
+    align-items: center;
+
+    transition: transform 1s ease;
+  }
+
+  .nav-links a {
+    color: white;
+    font-size: var(--header3);
+    padding: 0.2rem 1rem;
+    border-bottom: 2px solid white;
+  }
+  
+  .nav-open {
+    transform: translateX(-100%);
+  }
+
+  .nav-open + .burger {
+    transform: rotateZ(45deg);
+  }
+
+  .nav-open + .burger span {
+    background: white;
+  }
+
+  .nav-open + .burger span:nth-child(1) {
+    transform: rotateZ(90deg) translateX(45%);
+  }
+
+  .nav-open + .burger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  /* Hero */
+  .hero {
+    width: 100%;
+  }
 }
