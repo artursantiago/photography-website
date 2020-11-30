@@ -28,7 +28,8 @@ html {
   --header3: calc(3rem + 1vw);
   --header4: calc(2.4rem + 1vw);
   --text: calc(1.5rem + 1vw);
-  --big: calc(2.4rem + 1vw);
+  --big: calc(6rem + 1vw);
+  --extra-big: calc(10rem + 1vw);
   --special-color: #906272;
   --background-color: #414141;
   --gray-text: #525252;
@@ -38,7 +39,7 @@ h1 {
   font-size: var(--header1);
 }
 
-li, button, label, inpout, p, a {
+li, button, label, input, p, a {
   font-size: var(--text);
 }
 
@@ -289,7 +290,6 @@ h1 {
   color: white;
   background: rgba(65, 65, 65, 0.6);
   padding: 5rem 10rem;
-  border-radius: 1rem;
 }
 
 .gallery img {
@@ -305,6 +305,87 @@ h1 {
 .gallery2 {
   grid-column: 3/4;
   grid-row: 1/3;
+}
+
+/* Contact Section */
+
+.contact {
+  /* min-height: 90vh; */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-wrapper {
+  flex: 3 1 40rem;
+  align-items: center;
+}
+
+.form-wrapper h2 {
+  font-size: var(--big);
+  margin: 5rem 0rem;
+}
+
+.form-wrapper h2 span {
+  font-size: var(--extra-big);
+  font-family: 'Ruhl Medium';
+  color: var(--special-color);
+}
+
+.form-wrapper label {
+  display: block;
+}
+
+.form-wrapper input,
+.form-wrapper button {
+  width: 100%;
+}
+
+.form-wrapper input {
+  display: block;
+  margin: 3rem 0rem;
+  background: var(--background-color);
+  color: white;
+  border: none;
+  padding: 1rem;
+}
+
+.form-wrapper button {
+  padding: 1rem 8rem;
+  background: var(--special-color);
+  color: white;
+  border: none;
+  margin-bottom: 5rem;
+}
+
+.contact img {
+  flex: 1 1 40rem;
+}
+
+/* Footer */
+
+footer {
+  background: var(--background-color);
+}
+
+.footer-wrapper {
+  width: 90%;
+  margin: auto;
+  padding: 3rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer-wrapper p {
+  color: white;
+  flex: 5 1 40rem;
+}
+
+.footer-wrapper .social-medias {
+  flex: 1 1 20rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 /* Media Queries */
@@ -394,5 +475,34 @@ h1 {
 
   .gallery-head {
     display: none;
+  }
+
+  /* Contact  */
+  .contact img {
+    display: none;
+  }
+
+  /* Footer */
+
+  .footer-wrapper ul {
+    order: 1;
+  }
+
+  .footer-wrapper p {
+    order: 2;
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  html {
+    --header1: 3rem;
+    --header2: 5rem;
+    --header3: 4rem;
+    --header4: 4rem;
+    --text: 2.5rem;
+    --big: 7rem;
+    --extra-big: 12rem;
   }
 }
